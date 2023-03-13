@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "mybatis-plus.global-config.db-config.logic-not-delete-value",
+      "type": "java.lang.String",
+      "description": "Description for mybatis-plus.global-config.db-config.logic-not-delete-value."
+    },
+    {
+      "name": "server.servlet.context-path.multipart.max-file-size",
+      "type": "java.lang.String",
+      "description": "Description for server.servlet.context-path.multipart.max-file-size."
+    }
+  ] }
