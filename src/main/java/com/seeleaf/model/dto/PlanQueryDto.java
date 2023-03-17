@@ -1,22 +1,12 @@
-package com.seeleaf.model.domain;
+package com.seeleaf.model.dto;
 
-import com.baomidou.mybatisplus.annotation.*;
-
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
-/**
- * 
- * @TableName plan
- */
-@TableName(value ="plan")
+import java.util.Date;
+
 @Data
-public class Plan implements Serializable {
-    /**
-     * 主键
-     */
-    @TableId(type = IdType.AUTO)
+public class PlanQueryDto {
+    // id、planTitle、description、priority、tagName、status、createTime、total、paseSize、pageNum
     private Long id;
 
     /**
@@ -50,24 +40,12 @@ public class Plan implements Serializable {
     private Long userId;
 
     /**
-     * 是否删除(0为否，1为是)
-     */
-    @TableLogic
-    private Integer isDelete;
-
-    /**
      * 创建时间
      */
     private Date createTime;
 
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
-    @TableField(exist = false)
     private String tagName;
+
+
 }

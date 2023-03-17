@@ -15,7 +15,7 @@ public class PlanAddRequest implements Serializable {
     /**
      * 所属的标签
      */
-    private Long tagId;
+    private String tagName;
 
     /**
      * 计划标题
