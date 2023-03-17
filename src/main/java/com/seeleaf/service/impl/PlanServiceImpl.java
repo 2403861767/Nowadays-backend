@@ -129,6 +129,40 @@ public class PlanServiceImpl extends ServiceImpl<PlanMapper, Plan>
         planPageVo.setPlanList(planQueryDtoList);
         return planPageVo;
     }
+
+    @Override
+    public boolean finishPlan(int id) {
+        Plan plan = getPlanById(id);
+        if (plan.getStatus() == 1){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"已经完成该任务");
+        }
+        plan.setStatus(1);
+        boolean update = this.updateById(plan);
+        if (!update){
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR,"系统错误");
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deletePlan(int id) {
+        Plan plan = getPlanById(id);
+        boolean remove = this.removeById(plan);
+        if (!remove){
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR,"系统错误");
+        }
+        return true;
+    }
+
+    private Plan getPlanById(int id) {
+        LambdaQueryWrapper<Plan> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Plan::getId, id);
+        Plan plan = this.getOne(queryWrapper);
+        if (plan == null) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR,"系统错误");
+        }
+        return plan;
+    }
 }
 
 

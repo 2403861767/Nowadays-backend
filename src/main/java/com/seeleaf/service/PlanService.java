@@ -30,4 +30,18 @@ public interface PlanService extends IService<Plan> {
      * @return
      */
     PlanPageVo pageQueryPlan(PageParam pageParam, User loginUser);
+
+    /**
+     * 完成计划
+     * @param id
+     * @return
+     */
+    boolean finishPlan(int id);
+
+    /**
+     * 删除计划
+     * @param id
+     * @return
+     */
+    boolean deletePlan(int id);
 }

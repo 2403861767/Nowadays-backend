@@ -53,4 +53,24 @@ public class PlanController {
         return ResultUtils.success(planPage);
     }
 
+    @ApiOperation("完成计划接口")
+    @GetMapping("/finish")
+    public BaseResponse<Boolean>  finishPlan(int id){
+        if (id <= 0){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"参数错误");
+        }
+        boolean isFinish = planService.finishPlan(id);
+        return ResultUtils.success(isFinish);
+    }
+
+    @ApiOperation("删除计划接口")
+    @GetMapping("/delete")
+    public BaseResponse<Boolean>  deletePlan(int id){
+        if (id <= 0){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"参数错误");
+        }
+        boolean isDelete = planService.deletePlan(id);
+        return ResultUtils.success(isDelete);
+    }
+
 }
